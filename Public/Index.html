@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="Scripts/Jquery-1.8.2.js"></script>
+    <script src="Scripts/socket.io.js"></script>
+    <script src="Scripts/default.js"></script>
+    
+</head>
+<body>
+
+    <div class="chat-container">
+        <header class="chat-header">
+            <h1><i class="fas fa-hand-peace"></i>FriendsHub</h1>
+        </header>
+        <main class="chat-main">
+            <div class="userContainer">
+                <h3><i class="fas fa-users"></i> Users</h3>
+                <ul id="user"></ul>
+            </div>
+            <div class="dragAndDropZone">
+                <div id="conversation"></div>
+                
+            </div>
+            </main>
+</div>
+    
+    <div id="effectToUnderstand">
+
+    </div>
+    
+    <div class="messageContainer">
+        <form id="chat-form">
+            <input id="data"
+                   type="text"
+                   placeholder="Enter Message"
+                   required
+                   autocomplete="off" />
+            <br />
+
+            <button id="sendBtn"><i class="fas fa-paper-plane"></i> Send</button><br />
+            <input type="file" name="uploadfile" id="uploadfile" />
+        </form>
+
+    </div>
+   
+    <style>
+
+        @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
+        :root {
+            --dark-color-a: rgb(46, 120, 110);
+            --dark-color-b: rgb(46, 139, 87);
+            --light-color: #d9f2e4;
+            --success-color: #5cb85c;
+            --error-color: #d9534f;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            font-size: 16px;
+            background: var(--light-color);
+            margin: 20px;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        #sendBtn {
+            cursor: pointer;
+            padding: 5px 15px;
+            background: var(--light-color);
+            color: var(--dark-color-a);
+            border: 0;
+            font-size: 17px;
+        }
+
+        /* Chat Page */
+
+        .chat-container {
+            max-width: 1100px;
+            background: #fff;
+            margin: 30px auto;
+            overflow: hidden;
+        }
+
+        .chat-header {
+            background: var(--dark-color-a);
+            color: #fff;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .chat-main {
+            display: grid;
+            grid-template-columns: 1fr 3fr;
+        }
+
+        .userContainer {
+            background: var(--dark-color-b);
+            color: #fff;
+            padding: 20px 20px 60px;
+            overflow-y: scroll;
+        }
+
+            .userContainer h2 {
+                font-size: 20px;
+                background: rgba(0, 0, 0, 0.1);
+                padding: 10px;
+                margin-bottom: 20px;
+            }
+
+            .userContainer h3 {
+                margin-bottom: 15px;
+            }
+
+            .userContainer ul li {
+                padding: 10px 0;
+            }
+
+        .dragAndDropZone {
+            padding: 30px;
+            max-height: 500px;
+            overflow-y: scroll;
+        }
+
+            .dragAndDropZone .message {
+                padding: 10px;
+                margin-bottom: 15px;
+                background-color: var(--light-color);
+                border-radius: 5px;
+                overflow-wrap: break-word;
+            }
+
+                .dragAndDropZone .message .meta {
+                    font-size: 15px;
+                    font-weight: bold;
+                    color: var(--dark-color-b);
+                    opacity: 0.7;
+                    margin-bottom: 7px;
+                }
+
+                    .dragAndDropZone .message .meta span {
+                        color: #777;
+                    }
+
+        .messageContainer {
+            padding: 20px 30px;
+            background-color: var(--dark-color-a);
+        }
+
+            .messageContainer form {
+                display: flex;
+            }
+
+            .messageContainer input[type='text'] {
+                font-size: 16px;
+                padding: 5px;
+                height: 40px;
+                flex: 1;
+            }
+
+    </style>
+
+</body>
+</html>
